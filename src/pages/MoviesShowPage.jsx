@@ -18,7 +18,7 @@ export default function MoviesShowPage() {
     <>
       <section className="d-flex justify-content-center align-items-center">
         <div className="container mt-5 text-center">
-          <h1>{movie.title}</h1>
+          <h1 className="mb-4">{movie.title}</h1>
           <img
             src={movie.image}
             alt={movie.title}
@@ -26,10 +26,10 @@ export default function MoviesShowPage() {
             style={{ maxWidth: "400px" }}
           />
           <p className="mt-3">
-            <strong>Direct by:</strong> {movie.director}
+            <strong>Direct by: </strong> {movie.director}
           </p>
           <p>
-            <strong>Year:</strong> {movie.release_year}
+            <strong>Year: </strong> {movie.release_year}
           </p>
           <p>
             <em>{movie.abstract}</em>

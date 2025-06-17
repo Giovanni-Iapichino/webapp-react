@@ -1,6 +1,6 @@
 export default function ReviewCard({ review }) {
   return (
-    <div className="card mb-3 text-center p-3 d-flex align-items-center">
+    <div className="card h-100 text-center p-2 d-flex align-items-center">
       <div className="mb-2">
         <div className="avatar mx-auto mb-2">
           {review.name[0].toUpperCase()}
