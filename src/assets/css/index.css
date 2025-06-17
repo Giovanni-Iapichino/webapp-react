@@ -1,3 +1,17 @@
+:root {
+  background-color: #141414;
+}
+
+main {
+  background-color: #141414;
+  color: whitesmoke;
+}
+
+.btn.btn {
+  background-color: #e50914;
+  color: white;
+}
+
 .avatar {
   width: 40px;
   height: 40px;

@@ -14,12 +14,12 @@ export default function MoviesCard({ movie }) {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="card-body d-flex flex-column gap-1 mt-3">
+      <div className="card-body d-flex flex-column gap-1 mt-3 mb-3">
         <h5 className="card-title text-center">{movie.title}</h5>
         <p className="card-text text-center small flex-grow-1">
           <em>{movie.abstract}</em>
         </p>
-        <NavLink to={`/movies/${movie.id}`} className="btn btn-primary mt-auto">
+        <NavLink to={`/movies/${movie.id}`} className="btn btn mt-auto">
           See More
         </NavLink>
       </div>
