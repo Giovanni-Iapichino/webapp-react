@@ -1,13 +1,20 @@
-import Footer from "./components/Footer";
-import Main from "./components/Main";
-import Header from "./components/Header";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
+
+import DefaultLayout from "./layouts/DefaultLayout";
+
+import HomePage from "./pages/HomePage";
+import MoviesIndexPage from "./pages/MoviesIndexPage";
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<DefaultLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/movies" element={<MoviesIndexPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
