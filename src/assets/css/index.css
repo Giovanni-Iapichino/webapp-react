@@ -1,0 +1,18 @@
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #9c0f0f; /* grigio scuro Bootstrap */
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.card-movie img {
+  height: 550px;
+  object-fit: cover;
+}
