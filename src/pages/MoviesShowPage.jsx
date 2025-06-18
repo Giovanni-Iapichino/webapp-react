@@ -1,19 +1,28 @@
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import ReviewsList from "../components/ReviewsList";
 
-const movie = {
-  id: 1,
-  title: "Inception",
-  director: "Christopher Nolan",
-  genre: "Science Fiction",
-  release_year: 2010,
-  abstract:
-    "A skilled thief is given a chance at redemption if he can successfully perform inception.",
-  image: "http://localhost:3000/img/movies/inception.jpg",
-  created_at: "2024-11-29T10:40:13.000Z",
-  updated_at: "2025-05-22T10:55:27.000Z",
-};
-
 export default function MoviesShowPage() {
+  const { id } = useParams();
+  const apiUrl = import.meta.env.VITE_URL_BACKEND_API;
+  const [movie, setMovie] = useState();
+  const fetchReviews = () => {
+    axios.get(`${apiUrl}/${id}`).then((response) => {
+      setMovie(response.data.data);
+    });
+  };
+  useEffect(() => {
+    fetchReviews();
+  }, [id]);
+
+  if (!movie) {
+    return (
+      <div className="container text-center mt-5">
+        <h2>Caricamento in corso...</h2>
+      </div>
+    );
+  }
   return (
     <>
       <section className="d-flex justify-content-center align-items-center">
@@ -37,7 +46,7 @@ export default function MoviesShowPage() {
         </div>
       </section>
 
-      <ReviewsList />
+      <ReviewsList movie={movie} />
     </>
   );
 }
