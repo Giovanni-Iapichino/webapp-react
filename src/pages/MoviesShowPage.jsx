@@ -19,7 +19,7 @@ export default function MoviesShowPage() {
   if (!movie) {
     return (
       <div className="container text-center mt-5">
-        <h2>Caricamento in corso...</h2>
+        <h2>Nessun Film Trovato..</h2>
       </div>
     );
   }

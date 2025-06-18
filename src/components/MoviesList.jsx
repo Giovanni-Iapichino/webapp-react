@@ -15,6 +15,14 @@ export default function MoviesList() {
     fetchMovies();
   }, []);
 
+  if (!movies) {
+    return (
+      <div className="container text-center mt-5">
+        <h2>Nessun Film Trovato..</h2>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <div className="row">

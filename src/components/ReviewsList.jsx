@@ -2,7 +2,7 @@ import ReviewCard from "./ReviewsCard";
 
 export default function ReviewsList({ movie }) {
   return (
-    <div className="container text-center mt-5">
+    <div className="container text-center mt-5 mb-5">
       <h2 className="mb-4">Reviews</h2>
       <div className="row">
         {movie.reviews.map((review) => (
