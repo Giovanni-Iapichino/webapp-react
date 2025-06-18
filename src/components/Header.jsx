@@ -2,8 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className="container">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <header>
+      <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Navbar

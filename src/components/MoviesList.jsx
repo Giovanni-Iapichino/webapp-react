@@ -18,7 +18,7 @@ export default function MoviesList() {
   if (!movies) {
     return (
       <div className="container text-center mt-5">
-        <h2>Nessun Film Trovato..</h2>
+        <h2>Caricamento...</h2>
       </div>
     );
   }
