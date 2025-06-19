@@ -7,7 +7,7 @@ export default function ReviewCard({ review }) {
         <div className="review-avatar mb-2">{review.name[0].toUpperCase()}</div>
         <h5 className="mb-3 fw-semibold">{review.name}</h5>
         <small className="text-muted">
-          <RatingStars vote={Math.ceil(review.vote / 2)} maxVote={5} />
+          <RatingStars vote={review.vote} maxVote={5} />
         </small>
       </div>
       <div className="text-center">

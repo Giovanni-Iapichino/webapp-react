@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ReviewsList from "../components/ReviewsList";
+import ReviewsForm from "../components/ReviewsForm";
 
 export default function MoviesShowPage() {
   const { id } = useParams();
@@ -47,6 +48,8 @@ export default function MoviesShowPage() {
       </section>
 
       <ReviewsList movie={movie} />
+
+      <ReviewsForm idMovie={movie.id} setMovie={setMovie} />
     </>
   );
 }
