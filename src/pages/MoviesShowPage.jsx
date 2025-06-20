@@ -3,27 +3,31 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ReviewsList from "../components/ReviewsList";
 import ReviewsForm from "../components/ReviewsForm";
+import { useLoader } from "../contexts/LoaderContext";
 
 export default function MoviesShowPage() {
   const { id } = useParams();
   const apiUrl = import.meta.env.VITE_URL_BACKEND_API;
   const [movie, setMovie] = useState();
+  const { showLoader, hideLoader } = useLoader();
+
   const fetchReviews = () => {
-    axios.get(`${apiUrl}/${id}`).then((response) => {
-      setMovie(response.data.data);
-    });
+    showLoader();
+    axios
+      .get(`${apiUrl}/${id}`)
+      .then((response) => {
+        setMovie(response.data.data);
+      })
+      .finally(() => {
+        hideLoader(); // nasconde lo spinner
+      });
   };
   useEffect(() => {
     fetchReviews();
   }, [id]);
 
-  if (!movie) {
-    return (
-      <div className="container text-center mt-5">
-        <h2>Caricamento..</h2>
-      </div>
-    );
-  }
+  if (!movie) return null;
+
   return (
     <>
       <section className="d-flex justify-content-center align-items-center">

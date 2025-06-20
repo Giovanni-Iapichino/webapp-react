@@ -1,27 +1,28 @@
 import MoviesCard from "./MoviesCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useLoader } from "../contexts/LoaderContext";
 
 const apiUrl = import.meta.env.VITE_URL_BACKEND_API;
 
 export default function MoviesList() {
   const [movies, setMovies] = useState([]);
+  const { showLoader, hideLoader } = useLoader();
+
   const fetchMovies = () => {
-    axios.get(apiUrl).then((response) => {
-      setMovies(response.data.data);
-    });
+    showLoader();
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setMovies(response.data.data);
+      })
+      .finally(() => {
+        hideLoader();
+      });
   };
   useEffect(() => {
     fetchMovies();
   }, []);
-
-  if (!movies) {
-    return (
-      <div className="container text-center mt-5">
-        <h2>Caricamento...</h2>
-      </div>
-    );
-  }
 
   return (
     <div className="container">

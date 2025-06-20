@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useLoader } from "../contexts/LoaderContext";
 
 const reviewData = {
   name: "",
@@ -20,6 +21,8 @@ export default function ReviewsForm({ idMovie, setMovie }) {
     });
   };
 
+  const { showLoader, hideLoader } = useLoader();
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const payload = {
@@ -28,6 +31,8 @@ export default function ReviewsForm({ idMovie, setMovie }) {
       text: formData.text,
     };
 
+    showLoader();
+
     axios
       .post(`${apiUrl}/${idMovie}/reviews`, payload)
       .then(() => {
@@ -35,7 +40,10 @@ export default function ReviewsForm({ idMovie, setMovie }) {
       })
       .then((response) => {
         setMovie(response.data.data);
-        setFormData(reviewData); // reset del form
+        setFormData(reviewData);
+      })
+      .finally(() => {
+        hideLoader();
       });
   };
 
